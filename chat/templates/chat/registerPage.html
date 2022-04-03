@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+      integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+      integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-5">
+        <div
+          class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-12 comments-main pt-4 rounded"
+        >
+          <div class="row comment-box-main p-3 rounded-bottom">
+            <div class="pl-0 text-center">
+              <h1 id="login-name" style="font-color: blue">Register</h1>
+            </div>
+          </div>
+          <div class="f1">
+            {% for message in messages%}:
+            <div id='msg'><h3>{{message}}</h3></div>
+            {% endfor %}
+            <p />
+            <form method='POST' action="">
+                {%csrf_token%}
+            <div>
+              <h4>Username</h4>
+              <input type="text" name="username" placeholder="Enter Username" />
+            </div>
+            <div>
+                <h4>Password</h4>
+                <input type="password" name="password1" placeholder="Enter Password" />
+              </div>
+              <div>
+                <h4>Confirm Password</h4>
+                <input type="password" name="password2" placeholder="Confirm Password" />
+              </div>
+            <input type="submit" value="Register" />
+        </form>
+            <h5> Already have an account? <a href="{% url 'login' %}">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.14/vue.min.js"></script>
+</html>
